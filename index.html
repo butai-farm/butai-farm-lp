@@ -1,0 +1,2354 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>舞台ファーム 30%成長物語</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@600;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6C5CE7;
+            --secondary: #00CEC9;
+            --accent: #FD79A8;
+            --warning: #FDCB6E;
+            --success: #00B894;
+            --dark: #2D3436;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: #0a0a1a;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-100px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(100px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(253, 203, 110, 0.5)); }
+            50% { filter: drop-shadow(0 0 30px rgba(253, 203, 110, 0.8)); }
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1) rotate(180deg); }
+        }
+
+        @keyframes walk {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-5px) rotate(-3deg); }
+            75% { transform: translateY(-5px) rotate(3deg); }
+        }
+
+        @keyframes talk {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(0.8); }
+        }
+
+        @keyframes eyeBlink {
+            0%, 45%, 55%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(0.1); }
+        }
+
+        @keyframes armWave {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(-30deg); }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            10%, 30% { transform: scale(1.1); }
+            20% { transform: scale(1.2); }
+        }
+
+        /* Character Base Styles */
+        .character-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* ========== HARIU - 営業本部長（ロジカル×情熱の漢） ========== */
+        @keyframes fireAura {
+            0%, 100% {
+                filter: drop-shadow(0 0 15px rgba(255, 107, 107, 0.6));
+            }
+            50% {
+                filter: drop-shadow(0 0 25px rgba(255, 165, 0, 0.8));
+            }
+        }
+
+        @keyframes flameDance {
+            0%, 100% { transform: scaleY(1) translateY(0); }
+            25% { transform: scaleY(1.1) translateY(-2px); }
+            50% { transform: scaleY(0.95) translateY(1px); }
+            75% { transform: scaleY(1.05) translateY(-1px); }
+        }
+
+        .hariu {
+            width: 220px;
+            height: 300px;
+            position: relative;
+            animation: float 3s ease-in-out infinite, fireAura 2s ease-in-out infinite;
+        }
+
+        /* 炎のオーラ */
+        .hariu .fire-aura {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 60px;
+            z-index: -1;
+        }
+
+        .hariu .flame {
+            position: absolute;
+            bottom: 0;
+            border-radius: 50% 50% 20% 20%;
+            animation: flameDance 0.5s ease-in-out infinite;
+        }
+
+        .hariu .flame:nth-child(1) {
+            left: 30%;
+            width: 25px;
+            height: 40px;
+            background: linear-gradient(180deg, #ff6b6b 0%, #ffa500 50%, #ffff00 100%);
+            animation-delay: 0s;
+        }
+
+        .hariu .flame:nth-child(2) {
+            left: 45%;
+            width: 30px;
+            height: 50px;
+            background: linear-gradient(180deg, #ff4757 0%, #ff6b6b 50%, #ffa500 100%);
+            animation-delay: 0.1s;
+        }
+
+        .hariu .flame:nth-child(3) {
+            left: 60%;
+            width: 25px;
+            height: 35px;
+            background: linear-gradient(180deg, #ff6b6b 0%, #ffa500 50%, #ffff00 100%);
+            animation-delay: 0.2s;
+        }
+
+        .hariu .head {
+            width: 100px;
+            height: 110px;
+            background: linear-gradient(180deg, #FFCBA4 0%, #E8B896 100%);
+            border-radius: 50% 50% 45% 45%;
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: inset -8px -8px 15px rgba(0,0,0,0.1);
+        }
+
+        /* 短髪・スポーツ刈り風 */
+        .hariu .hair {
+            width: 108px;
+            height: 50px;
+            background: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 100%);
+            border-radius: 55% 55% 30% 30%;
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .hariu .hair::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 3px,
+                rgba(255,255,255,0.1) 3px,
+                rgba(255,255,255,0.1) 6px
+            );
+            border-radius: inherit;
+        }
+
+        /* 髪のハイライト */
+        .hariu .hair-highlight {
+            position: absolute;
+            width: 20px;
+            height: 15px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, transparent 100%);
+            top: 5px;
+            left: 20px;
+            border-radius: 50%;
+        }
+
+        /* 太い眉毛 - 体育会系 */
+        .hariu .eyebrow {
+            width: 22px;
+            height: 6px;
+            background: linear-gradient(90deg, #1a1a1a 0%, #2d2d2d 100%);
+            position: absolute;
+            top: 40px;
+            border-radius: 3px;
+            transform: rotate(-15deg);
+        }
+
+        .hariu .eyebrow.left { left: 18px; }
+        .hariu .eyebrow.right { right: 18px; transform: rotate(15deg); }
+
+        /* 燃える目 */
+        .hariu .eye {
+            width: 22px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 50px;
+            overflow: hidden;
+            animation: eyeBlink 5s ease-in-out infinite;
+        }
+
+        .hariu .eye.left { left: 18px; }
+        .hariu .eye.right { right: 18px; }
+
+        .hariu .eye::after {
+            content: '';
+            width: 16px;
+            height: 16px;
+            background: linear-gradient(135deg, #ff4757 0%, #ff6b6b 50%, #ffa500 100%);
+            border-radius: 50%;
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: fireAura 1s ease-in-out infinite;
+        }
+
+        .hariu .eye .pupil {
+            width: 10px;
+            height: 10px;
+            background: #1a1a1a;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .hariu .eye .shine {
+            width: 7px;
+            height: 7px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 6px;
+            right: 3px;
+            z-index: 2;
+        }
+
+        .hariu .eye .shine2 {
+            width: 4px;
+            height: 4px;
+            background: rgba(255,255,255,0.8);
+            border-radius: 50%;
+            position: absolute;
+            top: 12px;
+            right: 8px;
+            z-index: 2;
+        }
+
+        .hariu .nose {
+            width: 8px;
+            height: 14px;
+            background: linear-gradient(90deg, transparent 0%, rgba(0,0,0,0.1) 100%);
+            position: absolute;
+            top: 65px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 50%;
+        }
+
+        /* 力強い笑顔 */
+        .hariu .mouth {
+            width: 35px;
+            height: 18px;
+            background: linear-gradient(180deg, #E84393 0%, #d63384 100%);
+            border-radius: 0 0 50% 50%;
+            position: absolute;
+            top: 82px;
+            left: 50%;
+            transform: translateX(-50%);
+            overflow: hidden;
+        }
+
+        .hariu .mouth::after {
+            content: '';
+            width: 25px;
+            height: 8px;
+            background: #FF6B9D;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* 歯を見せた笑顔 */
+        .hariu .teeth {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 6px;
+            background: white;
+            border-radius: 0 0 5px 5px;
+        }
+
+        /* がっしりした体 */
+        .hariu .body {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(180deg, #2D3436 0%, #1a1a1a 100%);
+            position: absolute;
+            top: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 20px 20px 10px 10px;
+        }
+
+        .hariu .jacket-collar {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 45px;
+            height: 18px;
+            background: white;
+            clip-path: polygon(0 0, 100% 0, 85% 100%, 50% 60%, 15% 100%);
+        }
+
+        /* 赤いネクタイ - 情熱の象徴 */
+        .hariu .tie {
+            width: 20px;
+            height: 50px;
+            background: linear-gradient(180deg, #ff4757 0%, #ff6b6b 50%, #E84393 100%);
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            clip-path: polygon(30% 0%, 70% 0%, 100% 15%, 60% 100%, 40% 100%, 0% 15%);
+        }
+
+        /* 太い腕 - 体育会系 */
+        .hariu .arm {
+            width: 28px;
+            height: 70px;
+            background: linear-gradient(180deg, #2D3436 0%, #1a1a1a 100%);
+            position: absolute;
+            top: 125px;
+            border-radius: 12px;
+        }
+
+        .hariu .arm.left {
+            left: 28px;
+            transform-origin: top center;
+            animation: armWave 1.5s ease-in-out infinite;
+        }
+
+        .hariu .arm.right {
+            right: 28px;
+        }
+
+        .hariu .hand {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #FFCBA4 0%, #E8B896 100%);
+            border-radius: 50%;
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* 握りこぶし */
+        .hariu .fist {
+            width: 26px;
+            height: 22px;
+            background: linear-gradient(135deg, #FFCBA4 0%, #E8B896 100%);
+            border-radius: 8px;
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .hariu .leg {
+            width: 32px;
+            height: 75px;
+            background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+            position: absolute;
+            top: 215px;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .hariu .leg.left { left: 55px; }
+        .hariu .leg.right { right: 55px; }
+
+        .hariu .shoe {
+            width: 36px;
+            height: 14px;
+            background: linear-gradient(180deg, #2D3436 0%, #1a1a1a 100%);
+            position: absolute;
+            bottom: -10px;
+            left: -4px;
+            border-radius: 5px;
+        }
+
+        /* ========== WAKATE - 若手営業 ========== */
+        .wakate {
+            width: 180px;
+            height: 260px;
+            position: relative;
+            animation: float 4s ease-in-out infinite 0.5s;
+        }
+
+        .wakate .head {
+            width: 90px;
+            height: 100px;
+            background: linear-gradient(180deg, #FFE8D6 0%, #FFD5BA 100%);
+            border-radius: 50% 50% 45% 45%;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .wakate .hair {
+            width: 95px;
+            height: 55px;
+            background: linear-gradient(180deg, #6C5CE7 0%, #5849c2 100%);
+            border-radius: 50% 50% 30% 30%;
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .wakate .hair::before {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 40px;
+            background: #6C5CE7;
+            top: 15px;
+            left: -10px;
+            border-radius: 50%;
+            transform: rotate(-20deg);
+        }
+
+        .wakate .eye {
+            width: 22px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 40px;
+            animation: eyeBlink 5s ease-in-out infinite 1s;
+        }
+
+        .wakate .eye.left { left: 18px; }
+        .wakate .eye.right { right: 18px; }
+
+        .wakate .eye::after {
+            content: '';
+            width: 14px;
+            height: 14px;
+            background: linear-gradient(135deg, #6C5CE7 0%, #a29bfe 100%);
+            border-radius: 50%;
+            position: absolute;
+            bottom: 3px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .wakate .eye .shine {
+            width: 6px;
+            height: 6px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 6px;
+            right: 5px;
+            z-index: 1;
+        }
+
+        .wakate .mouth {
+            width: 20px;
+            height: 8px;
+            border: 3px solid #E84393;
+            border-top: none;
+            border-radius: 0 0 50% 50%;
+            position: absolute;
+            top: 72px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: transparent;
+        }
+
+        .wakate .body {
+            width: 80px;
+            height: 90px;
+            background: linear-gradient(180deg, #00CEC9 0%, #00b894 100%);
+            position: absolute;
+            top: 95px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 15px 15px 10px 10px;
+        }
+
+        .wakate .collar {
+            width: 30px;
+            height: 20px;
+            background: white;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            clip-path: polygon(0 0, 100% 0, 80% 100%, 50% 70%, 20% 100%);
+        }
+
+        .wakate .arm {
+            width: 22px;
+            height: 60px;
+            background: linear-gradient(180deg, #00CEC9 0%, #00b894 100%);
+            position: absolute;
+            top: 100px;
+            border-radius: 10px;
+        }
+
+        .wakate .arm.left { left: 30px; }
+        .wakate .arm.right { right: 30px; }
+
+        .wakate .hand {
+            width: 20px;
+            height: 20px;
+            background: #FFE8D6;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .wakate .leg {
+            width: 28px;
+            height: 65px;
+            background: #2D3436;
+            position: absolute;
+            top: 180px;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .wakate .leg.left { left: 52px; }
+        .wakate .leg.right { right: 52px; }
+
+        /* ========== 工場太郎（インド人・笑顔） ========== */
+        .koujou {
+            width: 200px;
+            height: 280px;
+            position: relative;
+            animation: float 4s ease-in-out infinite 1s;
+        }
+
+        /* インド人の肌色 */
+        .koujou .head {
+            width: 105px;
+            height: 105px;
+            background: linear-gradient(180deg, #D4A574 0%, #C4956A 100%);
+            border-radius: 50%;
+            position: absolute;
+            top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .koujou .helmet {
+            width: 110px;
+            height: 50px;
+            background: linear-gradient(180deg, #FFFFFF 0%, #F0F0F0 100%);
+            border-radius: 50% 50% 5% 5%;
+            position: absolute;
+            top: 0px;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 2px solid #E0E0E0;
+            box-shadow: inset 0 -5px 10px rgba(0,0,0,0.05);
+        }
+
+        /* 衛生帽のライン */
+        .koujou .helmet::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 12px;
+            background: linear-gradient(180deg, #4CAF50 0%, #388E3C 100%);
+            border-radius: 0 0 3px 3px;
+        }
+
+        .koujou .helmet::after {
+            content: '衛生';
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            font-weight: 900;
+            color: #4CAF50;
+            letter-spacing: 1px;
+        }
+
+        /* 大きくて明るい目 */
+        .koujou .eye {
+            width: 20px;
+            height: 22px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 48px;
+            animation: eyeBlink 6s ease-in-out infinite 2s;
+        }
+
+        .koujou .eye.left { left: 22px; }
+        .koujou .eye.right { right: 22px; }
+
+        .koujou .eye::after {
+            content: '';
+            width: 12px;
+            height: 12px;
+            background: linear-gradient(135deg, #5D4037 0%, #3E2723 100%);
+            border-radius: 50%;
+            position: absolute;
+            bottom: 3px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .koujou .eye .shine {
+            width: 5px;
+            height: 5px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 6px;
+            right: 4px;
+            z-index: 1;
+        }
+
+        /* 笑顔のほっぺ */
+        .koujou .cheek {
+            width: 18px;
+            height: 12px;
+            background: rgba(255, 107, 107, 0.25);
+            border-radius: 50%;
+            position: absolute;
+            top: 68px;
+        }
+
+        .koujou .cheek.left { left: 12px; }
+        .koujou .cheek.right { right: 12px; }
+
+        /* 大きな笑顔 */
+        .koujou .mouth {
+            width: 35px;
+            height: 18px;
+            background: linear-gradient(180deg, #E84393 0%, #d63384 100%);
+            border-radius: 0 0 50% 50%;
+            position: absolute;
+            top: 78px;
+            left: 50%;
+            transform: translateX(-50%);
+            overflow: hidden;
+        }
+
+        .koujou .mouth::after {
+            content: '';
+            width: 25px;
+            height: 8px;
+            background: #FF6B9D;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .koujou .teeth {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 22px;
+            height: 6px;
+            background: white;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .koujou .body {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(180deg, #FFFFFF 0%, #F5F5F5 100%);
+            position: absolute;
+            top: 105px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 15px 15px 10px 10px;
+            border: 2px solid #E0E0E0;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.03);
+        }
+
+        /* 白衣の襟 */
+        .koujou .body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 15px;
+            background: linear-gradient(180deg, #4CAF50 0%, #388E3C 100%);
+            border-radius: 0 0 10px 10px;
+        }
+
+        /* 白衣のボタン */
+        .koujou .body::after {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 50px;
+            background: repeating-linear-gradient(
+                180deg,
+                #4CAF50 0px,
+                #4CAF50 8px,
+                transparent 8px,
+                transparent 16px
+            );
+        }
+
+        .koujou .arm {
+            width: 28px;
+            height: 65px;
+            background: linear-gradient(180deg, #FFFFFF 0%, #F0F0F0 100%);
+            border: 1px solid #E0E0E0;
+            position: absolute;
+            top: 110px;
+            border-radius: 10px;
+        }
+
+        .koujou .arm.left { left: 25px; }
+        .koujou .arm.right { right: 25px; }
+
+        .koujou .hand {
+            width: 25px;
+            height: 25px;
+            background: #D4A574;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .koujou .leg {
+            width: 32px;
+            height: 70px;
+            background: linear-gradient(180deg, #FFFFFF 0%, #F0F0F0 100%);
+            border: 1px solid #E0E0E0;
+            position: absolute;
+            top: 200px;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .koujou .leg.left { left: 52px; }
+        .koujou .leg.right { right: 52px; }
+
+        /* ========== STORY SECTIONS ========== */
+        .story-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story-content {
+            max-width: 1200px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .story-content.reverse {
+            direction: rtl;
+        }
+
+        .story-content.reverse > * {
+            direction: ltr;
+        }
+
+        .story-text {
+            padding: 40px;
+        }
+
+        .story-characters {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 20px;
+            position: relative;
+        }
+
+        /* Opening Section */
+        .opening {
+            background: linear-gradient(180deg, #0a0a1a 0%, #1a1a3a 100%);
+            text-align: center;
+            flex-direction: column;
+        }
+
+        .opening-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FDCB6E 0%, #E84393 50%, #6C5CE7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        .opening-subtitle {
+            font-size: 2rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 60px;
+        }
+
+        .opening-characters {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        /* Section Backgrounds */
+        .section-prologue {
+            background: linear-gradient(180deg, #1a1a3a 0%, #2d2d5a 50%, #1a1a3a 100%);
+        }
+
+        .section-crisis {
+            background: linear-gradient(180deg, #4a1a1a 0%, #2d1a1a 100%);
+        }
+
+        .section-solution {
+            background: linear-gradient(180deg, #1a3a1a 0%, #1a4a2a 50%, #1a3a1a 100%);
+        }
+
+        .section-lesson {
+            background: linear-gradient(180deg, #1a2a4a 0%, #1a3a5a 50%, #1a2a4a 100%);
+        }
+
+        .section-finale {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        }
+
+        /* Speech Bubbles */
+        .speech-bubble {
+            background: white;
+            color: #2D3436;
+            padding: 25px 35px;
+            border-radius: 30px;
+            position: relative;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            animation: fadeInUp 0.8s ease backwards;
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 40px;
+            border: 15px solid transparent;
+            border-top-color: white;
+        }
+
+        .speech-bubble.right::after {
+            left: auto;
+            right: 40px;
+        }
+
+        .speech-bubble.shout {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
+            color: white;
+            font-weight: 700;
+            font-size: 1.4rem;
+            animation: shake 0.5s ease, fadeInUp 0.8s ease backwards;
+        }
+
+        .speech-bubble.shout::after {
+            border-top-color: #ff6b6b;
+        }
+
+        .speech-bubble.idea {
+            background: linear-gradient(135deg, #FDCB6E 0%, #F39C12 100%);
+            color: #2D3436;
+            font-weight: 700;
+        }
+
+        .speech-bubble.idea::after {
+            border-top-color: #FDCB6E;
+        }
+
+        /* Chapter Markers */
+        .chapter-marker {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            background: rgba(255,255,255,0.1);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .chapter-marker span {
+            color: var(--warning);
+            font-weight: 700;
+        }
+
+        /* Story Elements */
+        .story-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+
+        .story-title .highlight {
+            background: linear-gradient(135deg, #FDCB6E 0%, #E84393 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .story-description {
+            font-size: 1.2rem;
+            line-height: 2;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        /* Info Cards */
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .info-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 25px;
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .info-card.bad {
+            background: rgba(255, 107, 107, 0.2);
+            border-color: rgba(255, 107, 107, 0.4);
+        }
+
+        .info-card.good {
+            background: rgba(0, 184, 148, 0.2);
+            border-color: rgba(0, 184, 148, 0.4);
+        }
+
+        .info-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .info-card-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .info-card-desc {
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        /* Flow Chart */
+        .flow-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .flow-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .flow-step {
+            background: rgba(255,255,255,0.1);
+            padding: 20px 30px;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            flex: 1;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .flow-step.highlight {
+            background: linear-gradient(135deg, var(--success) 0%, #00CEC9 100%);
+            font-weight: 700;
+        }
+
+        .flow-arrow {
+            font-size: 1.5rem;
+            color: var(--warning);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .stat-box {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .stat-value {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FDCB6E 0%, #E84393 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-top: 10px;
+        }
+
+        /* Sparkles */
+        .sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #FDCB6E;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        /* Finale Section */
+        .finale-content {
+            text-align: center;
+            max-width: 900px;
+        }
+
+        .finale-tagline {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.5;
+            margin-bottom: 50px;
+            text-shadow: 0 5px 30px rgba(0,0,0,0.3);
+        }
+
+        .finale-characters {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .finale-message {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 30px;
+            padding: 40px 60px;
+            font-size: 1.3rem;
+            line-height: 2;
+        }
+
+        /* Character Labels */
+        .character-label {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.7);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .story-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .story-content.reverse {
+                direction: ltr;
+            }
+
+            .opening-title {
+                font-size: 3rem;
+            }
+
+            .finale-tagline {
+                font-size: 2rem;
+            }
+
+            .hariu, .wakate, .koujou {
+                transform: scale(0.8);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .opening-characters,
+            .finale-characters {
+                flex-wrap: wrap;
+            }
+
+            .story-title {
+                font-size: 1.8rem;
+            }
+
+            .info-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Opening -->
+    <section class="story-section opening">
+        <div>
+            <h1 class="opening-title">30%成長物語</h1>
+            <p class="opening-subtitle">舞台ファームを変えた、ある改革の記録</p>
+
+            <div class="opening-characters">
+                <div class="character-container">
+                    <div class="hariu">
+                        <div class="fire-aura">
+                            <div class="flame"></div>
+                            <div class="flame"></div>
+                            <div class="flame"></div>
+                        </div>
+                        <div class="hair"><div class="hair-highlight"></div></div>
+                        <div class="head">
+                            <div class="eyebrow left"></div>
+                            <div class="eyebrow right"></div>
+                            <div class="eye left"><div class="pupil"></div><div class="shine"></div><div class="shine2"></div></div>
+                            <div class="eye right"><div class="pupil"></div><div class="shine"></div><div class="shine2"></div></div>
+                            <div class="nose"></div>
+                            <div class="mouth"><div class="teeth"></div></div>
+                        </div>
+                        <div class="body">
+                            <div class="jacket-collar"></div>
+                            <div class="tie"></div>
+                        </div>
+                        <div class="arm left"><div class="fist"></div></div>
+                        <div class="arm right"><div class="hand"></div></div>
+                        <div class="leg left"><div class="shoe"></div></div>
+                        <div class="leg right"><div class="shoe"></div></div>
+                    </div>
+                    <div class="character-label">針生本部長 🔥</div>
+                </div>
+
+                <div class="character-container">
+                    <div class="wakate">
+                        <div class="hair"></div>
+                        <div class="head">
+                            <div class="eye left"><div class="shine"></div></div>
+                            <div class="eye right"><div class="shine"></div></div>
+                            <div class="mouth"></div>
+                        </div>
+                        <div class="body">
+                            <div class="collar"></div>
+                        </div>
+                        <div class="arm left"><div class="hand"></div></div>
+                        <div class="arm right"><div class="hand"></div></div>
+                        <div class="leg left"></div>
+                        <div class="leg right"></div>
+                    </div>
+                    <div class="character-label">新人 田中</div>
+                </div>
+
+                <div class="character-container">
+                    <div class="koujou">
+                        <div class="helmet"></div>
+                        <div class="head">
+                            <div class="eye left"></div>
+                            <div class="eye right"></div>
+                            <div class="cheek left"></div>
+                            <div class="cheek right"></div>
+                            <div class="mouth"><div class="teeth"></div></div>
+                        </div>
+                        <div class="body"></div>
+                        <div class="arm left"><div class="hand"></div></div>
+                        <div class="arm right"><div class="hand"></div></div>
+                        <div class="leg left"></div>
+                        <div class="leg right"></div>
+                    </div>
+                    <div class="character-label">工場太郎 😊</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prologue: 舞台ファームとは -->
+    <section class="story-section" style="background: linear-gradient(180deg, #0a0a1a 0%, #1a1a3a 100%);">
+        <div class="chapter-marker"><span>序章</span> 舞台ファームとは</div>
+        <div class="story-content">
+            <div class="story-text animate-on-scroll">
+                <h2 class="story-title">
+                    宮城から始まった<br>
+                    <span class="highlight">農業ベンチャー</span>
+                </h2>
+                <p class="story-description">
+                    舞台ファームは、宮城県を拠点とする農業法人。<br>
+                    植物工場でのレタス栽培、カットサラダの製造販売で急成長を遂げてきた。<br><br>
+                    しかし、成長には常に壁がある。<br>
+                    次のステージに進むためには、<strong>仕組み</strong>を変える必要があった——
+                </p>
+                <div class="info-cards" style="grid-template-columns: 1fr 1fr 1fr;">
+                    <div class="info-card" style="background: rgba(108, 92, 231, 0.2); border: 1px solid rgba(108, 92, 231, 0.4);">
+                        <div class="info-card-icon">🥬</div>
+                        <div class="info-card-title">植物工場</div>
+                        <div class="info-card-desc">レタスの安定生産</div>
+                    </div>
+                    <div class="info-card" style="background: rgba(0, 206, 201, 0.2); border: 1px solid rgba(0, 206, 201, 0.4);">
+                        <div class="info-card-icon">🥗</div>
+                        <div class="info-card-title">カットサラダ</div>
+                        <div class="info-card-desc">GMS向け製造販売</div>
+                    </div>
+                    <div class="info-card" style="background: rgba(253, 121, 168, 0.2); border: 1px solid rgba(253, 121, 168, 0.4);">
+                        <div class="info-card-icon">🚚</div>
+                        <div class="info-card-title">自社物流</div>
+                        <div class="info-card-desc">配送ネットワーク</div>
+                    </div>
+                </div>
+            </div>
+            <div class="story-characters animate-on-scroll">
+                <div style="text-align: center;">
+                    <div style="font-size: 8rem; margin-bottom: 20px;">🌱</div>
+                    <div style="font-size: 1.5rem; font-weight: 700; color: #00B894;">舞台ファーム</div>
+                    <div style="font-size: 1rem; opacity: 0.8; margin-top: 10px;">宮城県から全国へ</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 針生本部長の紹介 -->
+    <section class="story-section" style="background: linear-gradient(180deg, #1a1a3a 0%, #2d1a3a 100%);">
+        <div class="chapter-marker"><span>序章</span> 主人公</div>
+        <div class="story-content reverse">
+            <div class="story-text animate-on-scroll">
+                <h2 class="story-title">
+                    <span class="highlight">営業本部長</span><br>
+                    針生信洋
+                </h2>
+                <p class="story-description">
+                    農業を愛し、農業に愛された漢。<br>
+                    その胸には誰よりも熱い炎が燃えている。<br><br>
+                    「感覚や経験だけじゃダメだ。<br>
+                    <strong>再現可能な仕組み</strong>を作らないと、<br>
+                    会社は次のステージに行けない」<br><br>
+                    彼は決意した。<br>
+                    舞台ファームの営業を、根本から変える——
+                </p>
+                <div style="background: rgba(255, 107, 107, 0.2); border: 2px solid rgba(255, 107, 107, 0.4); border-radius: 20px; padding: 25px; margin-top: 20px;">
+                    <div style="font-size: 1.1rem; font-weight: 700; margin-bottom: 10px;">💡 針生本部長の信条</div>
+                    <div style="font-size: 1rem; line-height: 1.8;">
+                        「なぜ？なぜ？なぜ？」<br>
+                        原因をファクトで突き止め、<br>
+                        仕組みで解決する。<br>
+                        それが<strong>強い営業</strong>だ。
+                    </div>
+                </div>
+            </div>
+            <div class="story-characters animate-on-scroll">
+                <div class="character-container">
+                    <div class="hariu">
+                        <div class="fire-aura">
+                            <div class="flame"></div>
+                            <div class="flame"></div>
+                            <div class="flame"></div>
+                        </div>
+                        <div class="hair"><div class="hair-highlight"></div></div>
+                        <div class="head">
+                            <div class="eyebrow left"></div>
+                            <div class="eyebrow right"></div>
+                            <div class="eye left"><div class="pupil"></div><div class="shine"></div><div class="shine2"></div></div>
+                            <div class="eye right"><div class="pupil"></div><div class="shine"></div><div class="shine2"></div></div>
+                            <div class="nose"></div>
+                            <div class="mouth"><div class="teeth"></div></div>
+                        </div>
+                        <div class="body">
+                            <div class="jacket-collar"></div>
+                            <div class="tie"></div>
+                        </div>
+                        <div class="arm left"><div class="fist"></div></div>
+                        <div class="arm right"><div class="hand"></div></div>
+                        <div class="leg left"><div class="shoe"></div></div>
+                        <div class="leg right"><div class="shoe"></div></div>
+                    </div>
+                    <div class="character-label">針生信洋 🔥<br><small>営業本部長</small></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 1: Crisis -->
+    <section class="story-section section-crisis">
+        <div class="chapter-marker"><span>第1章</span> 危機</div>
+        <div class="story-content">
+            <div class="story-text animate-on-scroll">
+                <h2 class="story-title">
+                    「このままじゃ、<br>
+                    <span class="highlight">会社が終わる</span>」
+                </h2>
+                <p class="story-description">
+                    売上目標は未達が続く。<br>
+                    競合に価格で負け、新商品も出ない。<br>
+                    余った商品は捨てるしかない——
+                </p>
+                <div class="info-cards">
+                    <div class="info-card bad">
+                        <div class="info-card-icon">📉</div>
+                        <div class="info-card-title">積み上げコスト</div>
+                        <div class="info-card-desc">原価を積み上げるから価格で負ける</div>
+                    </div>
+                    <div class="info-card bad">
+                        <div class="info-card-icon">🥬</div>
+                        <div class="info-card-title">レタス依存</div>
+                        <div class="info-card-desc">一つの成功に頼りすぎている</div>
+                    </div>
+                    <div class="info-card bad">
+                        <div class="info-card-icon">🗑️</div>
+                        <div class="info-card-title">廃棄ロス</div>
+                        <div class="info-card-desc">余剰品は捨てるしかない</div>
+                    </div>
+                    <div class="info-card bad">
+                        <div class="info-card-icon">❓</div>
+                        <div class="info-card-title">データ不足</div>
+                        <div class="info-card-desc">改善したくても根拠がない</div>
+                    </div>
+                </div>
+            </div>
+            <div class="story-characters animate-on-scroll">
+                <div class="character-container">
+                    <div class="wakate" style="animation: shake 0.5s ease infinite;">
+                        <div class="hair"></div>
+                        <div class="head">
+                            <div class="eye left"><div class="shine"></div></div>
+                            <div class="eye right"><div class="shine"></div></div>
+                            <div class="mouth" style="border-radius: 50%; height: 15px; width: 15px; background: #E84393; border: none;"></div>
+                        </div>
+                        <div class="body"><div class="collar"></div></div>
+                        <div class="arm left"><div class="hand"></div></div>
+                        <div class="arm right"><div class="hand"></div></div>
+                        <div class="leg left"></div>
+                        <div class="leg right"></div>
+                    </div>
+                </div>
+                <div class="speech-bubble shout" style="margin-left: 20px;">
+                    本部長！<br>
+                    今月も目標未達です...！
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 2: The Leader Appears -->
+    <section class="story-section section-solution">
+        <div class="chapter-marker"><span>第2章</span> 覚醒</div>
+        <div class="story-content reverse">
+            <div class="story-text animate-on-scroll">
+                <h2 class="story-title">
+                    「<span class="highlight">逆算</span>で考えろ」
+                </h2>
+                <p class="story-description">
+                    針生本部長は全員を集め、宣言した。<br>
+                    「積み上げじゃない。店頭価格から逆算するんだ」
+                </p>
+                <div class="flow-chart">
+                    <div class="flow-item">
+                        <div class="flow-step highlight">🏪 店頭価格 ¥298</div>
+                        <div class="flow-arrow">←</div>
+                        <div style="font-size: 0.9rem; opacity: 0.8;">市場で勝てる価格</div>
+                    </div>
+                    <div class="flow-item">
+                        <div class="flow-step">💰 GP控除 → 納品価格 ¥200</div>
+                    </div>
+                    <div class="flow-item">
+                        <div class="flow-step">🚚 物流・営業費控除 → ¥160</div>
+                    </div>
+                    <div class="flow-item">
+                        <div class="flow-step highlight">🏭 製造原価 ¥120</div>
+                        <div class="flow-arrow">←</div>
+                        <div style="font-size: 0.9rem; opacity: 0.8;">この金額で作れ！</div>
+                    </div>
+                </div>
+            </div>
+            <div class="story-characters animate-on-scroll">
+                <div class="speech-bubble idea">
+                    よく聞いてくれ。<br>
+                    <strong>商品開発は店頭価格から決める。</strong><br>
+                    安くても高くてもダメ。大切なのは値頃感。<br>
+                    お客様ファーストで全社でコストをコントロールして喜んでもらう。<br>
+                    <strong>それが強い営業だ！</strong>
+                </div>
+                <div class="character-container" style="margin-left: 20px;">
+                    <div class="hariu" style="animation: pulse 1.5s ease-in-out infinite;">
+                        <div class="fire-aura">
+                            <div class="flame"></div>
+                            <div class="flame"></div>
+                            <div class="flame"></div>
+                        </div>
+                        <div class="hair"><div class="hair-highlight"></div></div>
+                        <div class="head">
+                            <div class="eyebrow left" style="transform: rotate(-20deg);"></div>
+                            <div class="eyebrow right" style="transform: rotate(20deg);"></div>
+                            <div class="eye left"><div class="pupil"></div><div class="shine"></div><div class="shine2"></div></div>
+                            <div class="eye right"><div class="pupil"></div><div class="shine"></div><div class="shine2"></div></div>
+                            <div class="nose"></div>
+                            <div class="mouth" style="height: 20px;"><div class="teeth"></div></div>
+                        </div>
+                        <div class="body"><div class="jacket-collar"></div><div class="tie"></div></div>
+                        <div class="arm left" style="animation: armWave 0.8s ease-in-out infinite;"><div class="fist"></div></div>
+                        <div class="arm right"><div class="fist"></div></div>
+                        <div class="leg left"><div class="shoe"></div></div>
+                        <div class="leg right"><div class="shoe"></div></div>
+                    </div>
+                    <div class="sparkles">
+                        <div class="sparkle" style="top: -20px; left: 50%; animation-delay: 0s;"></div>
+                        <div class="sparkle" style="top: 0; left: 20%; animation-delay: 0.5s;"></div>
+                        <div class="sparkle" style="top: 0; right: 20%; animation-delay: 1s;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 2.5: 工場長との対話 -->
+    <section class="story-section" style="background: linear-gradient(180deg, #2d2d5a 0%, #1a1a3a 100%);">
+        <div class="chapter-marker"><span>第2章</span> 対話</div>
+        <div class="story-content">
+            <div class="story-text animate-on-scroll">
+                <h2 class="story-title">
+                    「本当に<span class="highlight">その価格</span>で<br>
+                    作れるのか？」
+                </h2>
+                <p class="story-description">
+                    工場長さんは、針生の提案に難色を示した。<br>
+                    「営業が決めた原価で作れって言われても...<br>
+                    品質を落とすわけにはいかない」
+                </p>
+            </div>
+            <div class="story-characters animate-on-scroll">
+                <div class="character-container">
+                    <div class="koujou">
+                        <div class="helmet"></div>
+                        <div class="head">
+                            <div class="eye left"></div>
+                            <div class="eye right"></div>
+                            <div class="cheek left"></div>
+                            <div class="cheek right"></div>
+                            <div class="mouth"><div class="teeth"></div></div>
+                        </div>
+                        <div class="body"></div>
+                        <div class="arm left"><div class="hand"></div></div>
+                        <div class="arm right"><div class="hand"></div></div>
+                        <div class="leg left"></div>
+                        <div class="leg right"></div>
+                    </div>
+                </div>
+                <div class="speech-bubble" style="margin-left: 20px;">
+                    品質を落とさずに<br>
+                    コストを下げる？<br>
+                    <strong>そんなの無理だよ...</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 針生の説得 -->
+    <section class="story-section" style="background: linear-gradient(180deg, #1a1a3a 0%, #1a3a2a 100%);">
+        <div class="chapter-marker"><span>第2章</span> 説得</div>
+        <div class="story-content reverse">
+            <div class="story-text animate-on-scroll">
+                <h2 class="story-title">
+                    「<span class="highlight">一緒に考えよう</span>」
+                </h2>
+                <p class="story-description">
+                    針生は、工場長の目を見て言った。<br><br>
+                    「工場さん、俺は無理を押し付けたいんじゃない。<br>
+                    <strong>一緒に仕組みを作りたいんだ。</strong><br><br>
+                    営業が市場を見て価格を決める。<br>
+                    工場がその価格で作れる方法を考える。<br>
+                    お互いの知恵を出し合えば、必ず答えは見つかる」
+                </p>
+                <div style="background: rgba(0, 184, 148, 0.2); border: 2px solid rgba(0, 184, 148, 0.4); border-radius: 20px; padding: 25px; margin-top: 20px;">
+                    <div style="font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; color: #00B894;">🤝 新しい関係性</div>
+                    <div style="font-size: 1rem; line-height: 1.8;">
+                        <strong>営業の役割</strong>：市場を見て、勝てる価格を決める<br>
+                        <strong>工場の役割</strong>：その価格で作る方法を考える<br>
+                        <strong>評価基準</strong>：1円でも安く作れたら、それが工場の成果
+                    </div>
+                </div>
+            </div>
+            <div class="story-characters animate-on-scroll">
+                <div class="speech-bubble idea">
+                    品質を落とすんじゃない。<br>
+                    <strong>ムダを削るんだ。</strong><br><br>
+                    工程を見直す。<br>
+                    材料を見直す。<br>
+                    その1円の積み重ねが、<br>
+                    競争力になる。
+                </div>
+                <div class="character-container" style="margin-left: 20px;">
+                    <div class="hariu" style="transform: scale(0.9);">
+                        <div class="fire-aura">
+                            <div class="flame"></div>
+                            <div class="flame"></div>
+                            <div class="flame"></div>
+                        </div>
+                        <div class="hair"><div class="hair-highlight"></div></div>
+                        <div class="head">
+                            <div class="eyebrow left"></div>
+                            <div class="eyebrow right"></div>
+                            <div class="eye left"><div class="pupil"></div><div class="shine"></div><div class="shine2"></div></div>
+                            <div class="eye right"><div class="pupil"></div><div class="shine"></div><div class="shine2"></div></div>
+                            <div class="nose"></div>
+                            <div class="mouth"><div class="teeth"></div></div>
+                        </div>
+                        <div class="body"><div class="jacket-collar"></div><div class="tie"></div></div>
+                        <div class="arm left"><div class="hand"></div></div>
+                        <div class="arm right"><div class="hand"></div></div>
+                        <div class="leg left"><div class="shoe"></div></div>
+                        <div class="leg right"><div class="shoe"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 工場長の理解 -->
+    <section class="story-section section-solution">
+        <div class="chapter-marker"><span>第2章</span> 理解</div>
+        <div class="story-content">
+            <div class="story-text animate-on-scroll">
+                <h2 class="story-title">
+                    「<span class="highlight">やってみるか</span>」
+                </h2>
+                <p class="story-description">
+                    工場長は、しばらく考え込んだ後、<br>
+                    静かに頷いた。<br><br>
+                    「確かに...今まで『作った後で売る』だった。<br>
+                    でも、<strong>『売れる価格で作る』</strong>という発想は<br>
+                    考えたことがなかった」<br><br>
+                    「やってみる価値はある。<br>
+                    まずは一つの商品でトライしてみよう」
+                </p>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-value" style="font-size: 2rem;">Before</div>
+                        <div class="stat-label">作る→売る</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" style="font-size: 2rem; color: #00B894;">After</div>
+                        <div class="stat-label">売れる価格→作る</div>
+                    </div>
+                </div>
+            </div>
+            <div class="story-characters animate-on-scroll">
+                <div class="character-container">
+                    <div class="koujou">
+                        <div class="helmet"></div>
+                        <div class="head">
+                            <div class="eye left" style="height: 20px;"></div>
+                            <div class="eye right" style="height: 20px;"></div>
+                            <div class="cheek left"></div>
+                            <div class="cheek right"></div>
+                            <div class="mouth"><div class="teeth"></div></div>
+                        </div>
+                        <div class="body"></div>
+                        <div class="arm left" style="transform: rotate(-20deg); transform-origin: top;"><div class="hand"></div></div>
+                        <div class="arm right"><div class="hand"></div></div>
+                        <div class="leg left"></div>
+                        <div class="leg right"></div>
+                    </div>
+                </div>
+                <div class="speech-bubble" style="margin-left: 20px;">
+                    わかった、針生さん。<br>
+                    <strong>一緒にやろう。</strong><br><br>
+                    工場も変わる時が来たんだな。
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 3: New Products -->
+    <section class="story-section section-lesson">
+        <div class="chapter-marker"><span>第3章</span> 挑戦</div>
+        <div class="story-content">
+            <div class="story-text animate-on-scroll">
+                <h2 class="story-title">
+                    「売上の<span class="highlight">50%</span>を<br>
+                    新商品で稼げ」
+                </h2>
+                <p class="story-description">
+                    トレンドは数ヶ月で変わる時代。<br>
+                    一つのヒットに依存すれば、会社は衰退する。<br>
+                    常に新しい価値を生み出し続けろ。
+                </p>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-value">50%</div>
+                        <div class="stat-label">新商品売上比率</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">3年</div>
+                        <div class="stat-label">以内の商品で稼ぐ</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">SEG</div>
+                        <div class="stat-label">Simple Economy Good</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">∞</div>
+                        <div class="stat-label">開発の可能性</div>
+                    </div>
+                </div>
+            </div>
+            <div class="story-characters animate-on-scroll">
+                <div class="character-container">
+                    <div class="wakate">
+                        <div class="hair"></div>
+                        <div class="head">
+                            <div class="eye left" style="height: 28px;"><div class="shine"></div></div>
+                            <div class="eye right" style="height: 28px;"><div class="shine"></div></div>
+                            <div class="mouth" style="width: 25px; height: 12px; background: #E84393; border: none; border-radius: 0 0 50% 50%;"></div>
+                        </div>
+                        <div class="body"><div class="collar"></div></div>
+                        <div class="arm left" style="transform-origin: top; animation: armWave 1.5s ease-in-out infinite;"><div class="hand"></div></div>
+                        <div class="arm right"><div class="hand"></div></div>
+                        <div class="leg left"></div>
+                        <div class="leg right"></div>
+                    </div>
+                </div>
+                <div class="speech-bubble" style="margin-left: 20px;">
+                    わかりました！<br>
+                    <strong>毎年、新しい価値を<br>
+                    生み出し続けます！</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 4: Zero Waste - 現状の問題 -->
+    <section class="story-section section-crisis">
+        <div class="chapter-marker"><span>第4章</span> 転換</div>
+        <div class="story-content">
+            <div class="story-text animate-on-scroll">
+                <h2 class="story-title">
+                    「今、<span class="highlight">どれだけ捨ててる？</span>」
+                </h2>
+                <p class="story-description">
+                    針生本部長は、工場の現状を突きつけた。<br>
+                    毎日、どれだけの価値が捨てられているのか——
+                </p>
+                <div class="info-cards">
+                    <div class="info-card bad">
+                        <div class="info-card-icon">🥬</div>
+                        <div class="info-card-title">植物工場のレタス</div>
+                        <div class="info-card-desc">需要予測が外れると余剰レタスはそのまま廃棄。売れなければゴミになる。</div>
+                    </div>
+                    <div class="info-card bad">
+                        <div class="info-card-icon">🥗</div>
+                        <div class="info-card-title">カットサラダ工場</div>
+                        <div class="info-card-desc">キャベツの芯、外葉、端材...食べられる部分も全て廃棄している。</div>
+                    </div>
+                    <div class="info-card bad">
+                        <div class="info-card-icon">📉</div>
+                        <div class="info-card-title">廃棄コスト</div>
+                        <div class="info-card-desc">捨てるにもコストがかかる。産廃費用、人件費、環境負荷...</div>
+                    </div>
+                    <div class="info-card bad">
+                        <div class="info-card-icon">💸</div>
+                        <div class="info-card-title">失われる利益</div>
+                        <div class="info-card-desc">本来なら売上になるはずのものが、マイナスを生んでいる。</div>
+                    </div>
+                </div>
+            </div>
+            <div class="story-characters animate-on-scroll">
+                <div class="character-container">
+                    <div class="koujou" style="animation: shake 0.5s ease infinite;">
+                        <div class="helmet"></div>
+                        <div class="head">
+                            <div class="eye left"></div>
+                            <div class="eye right"></div>
+                            <div class="cheek left"></div>
+                            <div class="cheek right"></div>
+                            <div class="mouth"><div class="teeth"></div></div>
+                        </div>
+                        <div class="body"></div>
+                        <div class="arm left"><div class="hand"></div></div>
+                        <div class="arm right"><div class="hand"></div></div>
+                        <div class="leg left"></div>
+                        <div class="leg right"></div>
+                    </div>
+                </div>
+                <div class="speech-bubble shout" style="margin-left: 20px;">
+                    確かに...<br>
+                    毎日かなりの量を<br>
+                    捨てています...
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 4-2: Zero Waste Solution -->
+    <section class="story-section section-solution">
+        <div class="chapter-marker"><span>第4章</span> 解決策</div>
+        <div class="story-content reverse">
+            <div class="story-text animate-on-scroll">
+                <h2 class="story-title">
+                    「<span class="highlight">何も捨てるな</span>」
+                </h2>
+                <p class="story-description">
+                    タイの財閥CPグループは、すべてを収益に変えている。<br>
+                    廃棄コストを利益に転換する仕組み、<br>
+                    それを<strong>徹底的にパクってパクってアレンジ（TPPA）</strong>する。
+                </p>
+                <div style="background: rgba(253, 203, 110, 0.2); border: 2px solid rgba(253, 203, 110, 0.5); border-radius: 20px; padding: 25px; margin-bottom: 25px;">
+                    <div style="font-size: 1.3rem; font-weight: 700; margin-bottom: 15px; color: #FDCB6E;">🐊 CPグループの驚異的な仕組み</div>
+                    <div style="display: grid; gap: 15px;">
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <span style="font-size: 1.5rem;">🐔</span>
+                            <span>疾病リスクの鶏（IoT+AIで個体管理）</span>
+                            <span style="color: #FDCB6E;">→</span>
+                            <span style="font-size: 1.5rem;">🐊</span>
+                            <span>ワニの餌に</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <span style="font-size: 1.5rem;">🐊</span>
+                            <span>育ったワニ</span>
+                            <span style="color: #FDCB6E;">→</span>
+                            <span style="font-size: 1.5rem;">🥩</span>
+                            <span>中国で高級食材として販売</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <span style="font-size: 1.5rem;">🐊</span>
+                            <span>ワニの皮</span>
+                            <span style="color: #FDCB6E;">→</span>
+                            <span style="font-size: 1.5rem;">👜</span>
+                            <span>高級革製品（バッグ等）</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <span style="font-size: 1.5rem;">🥚</span>
+                            <span>割れた卵</span>
+                            <span style="color: #FDCB6E;">→</span>
+                            <span style="font-size: 1.5rem;">🧪</span>
+                            <span>液卵としてパン工場へ</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <span style="font-size: 1.5rem;">🐚</span>
+                            <span>卵の殻＋鶏糞</span>
+                            <span style="color: #FDCB6E;">→</span>
+                            <span style="font-size: 1.5rem;">🌱</span>
+                            <span>肥料として農家へ販売</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="story-characters animate-on-scroll">
+                <div class="speech-bubble idea">
+                    廃棄物が<br>
+                    <strong>全部収益になってる...！</strong><br>
+                    すごい仕組みだ！
+                </div>
+                <div class="character-container" style="margin-left: 20px;">
+                    <div class="wakate">
+                        <div class="hair"></div>
+                        <div class="head">
+                            <div class="eye left" style="height: 28px;"><div class="shine"></div></div>
+                            <div class="eye right" style="height: 28px;"><div class="shine"></div></div>
+                            <div class="mouth" style="width: 20px; height: 15px; background: #E84393; border: none; border-radius: 50%;"></div>
+                        </div>
+                        <div class="body"><div class="collar"></div></div>
+                        <div class="arm left"><div class="hand"></div></div>
+                        <div class="arm right"><div class="hand"></div></div>
+                        <div class="leg left"></div>
+                        <div class="leg right"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 4-3: 舞台ファームでの適用 -->
+    <section class="story-section section-lesson">
+        <div class="chapter-marker"><span>第4章</span> 適用</div>
+        <div class="story-content">
+            <div class="story-text animate-on-scroll">
+                <h2 class="story-title">
+                    「舞台ファームで<span class="highlight">どう変える？</span>」
+                </h2>
+                <p class="story-description">
+                    CPグループの仕組みを、舞台ファームに適用する。<br>
+                    余剰レタス、キャベツの芯、外葉...<br>
+                    すべてに<strong>第二の命</strong>を与える。
+                </p>
+                <div class="info-cards">
+                    <div class="info-card good">
+                        <div class="info-card-icon">🥬→🧃</div>
+                        <div class="info-card-title">余剰レタス</div>
+                        <div class="info-card-desc">スムージー原料、乾燥野菜、飼料、堆肥化など複数ルートを確立</div>
+                    </div>
+                    <div class="info-card good">
+                        <div class="info-card-icon">🥗→🍜</div>
+                        <div class="info-card-title">キャベツの芯・外葉</div>
+                        <div class="info-card-desc">業務用カット野菜、漬物原料、飼料など用途開発</div>
+                    </div>
+                    <div class="info-card good">
+                        <div class="info-card-icon">🏭</div>
+                        <div class="info-card-title">工場稼働率80%</div>
+                        <div class="info-card-desc">100%ではなく余力を残す。GW・年末年始の特需にも対応可能に</div>
+                    </div>
+                    <div class="info-card good">
+                        <div class="info-card-icon">💰</div>
+                        <div class="info-card-title">廃棄コスト→収益</div>
+                        <div class="info-card-desc">マイナスがプラスに転換。利益率が劇的に改善</div>
+                    </div>
+                </div>
+                <div class="stats-grid" style="margin-top: 30px;">
+                    <div class="stat-box">
+                        <div class="stat-value">80%</div>
+                        <div class="stat-label">目標稼働率</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">0%</div>
+                        <div class="stat-label">目標廃棄率</div>
+                    </div>
+                </div>
+            </div>
+            <div class="story-characters animate-on-scroll">
+                <div class="character-container">
+                    <div class="koujou">
+                        <div class="helmet"></div>
+                        <div class="head">
+                            <div class="eye left" style="height: 22px;"></div>
+                            <div class="eye right" style="height: 22px;"></div>
+                            <div class="cheek left"></div>
+                            <div class="cheek right"></div>
+                            <div class="mouth"><div class="teeth"></div></div>
+                        </div>
+                        <div class="body"></div>
+                        <div class="arm left" style="transform: rotate(-30deg); transform-origin: top;"><div class="hand"></div></div>
+                        <div class="arm right"><div class="hand"></div></div>
+                        <div class="leg left"></div>
+                        <div class="leg right"></div>
+                    </div>
+                </div>
+                <div class="speech-bubble" style="margin-left: 20px;">
+                    捨てていたものが<br>
+                    全部売上になるなら...<br>
+                    <strong>やる価値は十分ある！</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter: 物流戦略 -->
+    <section class="story-section" style="background: linear-gradient(180deg, #1a2a4a 0%, #0a1a3a 100%);">
+        <div class="chapter-marker"><span>第5章</span> 物流</div>
+        <div class="story-content">
+            <div class="story-text animate-on-scroll">
+                <h2 class="story-title">
+                    「<span class="highlight">物流</span>も<br>
+                    トータルで考えろ」
+                </h2>
+                <p class="story-description">
+                    多くの会社が自社物流を廃止し、3PL（SBSなど大手物流会社）に委託している。<br>
+                    確かに、事故対応やドライバー管理の負担は大きい。<br><br>
+                    しかし——
+                </p>
+                <div class="info-cards">
+                    <div class="info-card" style="background: rgba(116, 185, 255, 0.2); border: 1px solid rgba(116, 185, 255, 0.4);">
+                        <div class="info-card-icon">💰</div>
+                        <div class="info-card-title">コスト比較</div>
+                        <div class="info-card-desc">自社配送の方が圧倒的に割安。3PL委託はコスト高。</div>
+                    </div>
+                    <div class="info-card" style="background: rgba(162, 155, 254, 0.2); border: 1px solid rgba(162, 155, 254, 0.4);">
+                        <div class="info-card-icon">🤖</div>
+                        <div class="info-card-title">自動運転の未来</div>
+                        <div class="info-card-desc">テスラ、BYD、ソフトバンク×ウェイブ...自動運転は既定路線。</div>
+                    </div>
+                    <div class="info-card" style="background: rgba(253, 203, 110, 0.2); border: 1px solid rgba(253, 203, 110, 0.4);">
+                        <div class="info-card-icon">⏱️</div>
+                        <div class="info-card-title">本当の課題</div>
+                        <div class="info-card-desc">配送より「積み下ろし」「受け入れ待ち」の時間がボトルネック。</div>
+                    </div>
+                    <div class="info-card" style="background: rgba(0, 184, 148, 0.2); border: 1px solid rgba(0, 184, 148, 0.4);">
+                        <div class="info-card-icon">🏭</div>
+                        <div class="info-card-title">戦略</div>
+                        <div class="info-card-desc">地方工場＋純消費地の物流倉庫。自社ネットワークを構築。</div>
+                    </div>
+                </div>
+            </div>
+            <div class="story-characters animate-on-scroll">
+                <div class="character-container">
+                    <div class="hariu" style="transform: scale(0.85);">
+                        <div class="fire-aura">
+                            <div class="flame"></div>
+                            <div class="flame"></div>
+                            <div class="flame"></div>
+                        </div>
+                        <div class="hair"><div class="hair-highlight"></div></div>
+                        <div class="head">
+                            <div class="eyebrow left"></div>
+                            <div class="eyebrow right"></div>
+                            <div class="eye left"><div class="pupil"></div><div class="shine"></div><div class="shine2"></div></div>
+                            <div class="eye right"><div class="pupil"></div><div class="shine"></div><div class="shine2"></div></div>
+                            <div class="nose"></div>
+                            <div class="mouth"><div class="teeth"></div></div>
+                        </div>
+                        <div class="body"><div class="jacket-collar"></div><div class="tie"></div></div>
+                        <div class="arm left"><div class="fist"></div></div>
+                        <div class="arm right"><div class="hand"></div></div>
+                        <div class="leg left"><div class="shoe"></div></div>
+                        <div class="leg right"><div class="shoe"></div></div>
+                    </div>
+                </div>
+                <div class="speech-bubble" style="margin-left: 20px;">
+                    安易に外注するな。<br>
+                    <strong>自社でやれることの<br>
+                    コスト優位性を検証しろ。</strong><br><br>
+                    自動運転時代を見据えて、<br>
+                    今から倉庫側の効率化を<br>
+                    進めておく。
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter: データ基盤 -->
+    <section class="story-section" style="background: linear-gradient(180deg, #0a1a3a 0%, #1a1a2a 100%);">
+        <div class="chapter-marker"><span>第6章</span> データ</div>
+        <div class="story-content reverse">
+            <div class="story-text animate-on-scroll">
+                <h2 class="story-title">
+                    「<span class="highlight">改善</span>には<br>
+                    データが必要だ」
+                </h2>
+                <p class="story-description">
+                    針生は、改善活動の限界を感じていた。<br><br>
+                    「なぜ売れたのか」「なぜ売れなかったのか」<br>
+                    その答えを出すには、データが必要だ。<br><br>
+                    しかし今の舞台ファームには、それがない——
+                </p>
+                <div style="background: rgba(255, 107, 107, 0.2); border: 2px solid rgba(255, 107, 107, 0.4); border-radius: 20px; padding: 25px; margin-bottom: 25px;">
+                    <div style="font-size: 1.1rem; font-weight: 700; margin-bottom: 15px; color: #ff6b6b;">📊 必要な分析軸</div>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; text-align: center;">
+                        <div style="background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">アイテム別</div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">カテゴリー別</div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">得意先別</div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">店舗別</div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">地域別</div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 10px; border-radius: 10px;">期間別</div>
+                    </div>
+                </div>
+                <p class="story-description">
+                    セールスフォースやTableauは今期で解約。<br>
+                    そのコスト分を、<strong>自社データベース構築</strong>に投資する。
+                </p>
+            </div>
+            <div class="story-characters animate-on-scroll">
+                <div class="speech-bubble idea">
+                    「なぜ？なぜ？なぜ？」<br><br>
+                    この問いに答えるには<br>
+                    <strong>ファクト</strong>が必要だ。<br><br>
+                    感覚じゃない。<br>
+                    データで判断する<br>
+                    仕組みを作る。
+                </div>
+                <div class="character-container" style="margin-left: 20px;">
+                    <div class="wakate">
+                        <div class="hair"></div>
+                        <div class="head">
+                            <div class="eye left" style="height: 26px;"><div class="shine"></div></div>
+                            <div class="eye right" style="height: 26px;"><div class="shine"></div></div>
+                            <div class="mouth" style="width: 22px; height: 10px; background: #E84393; border: none; border-radius: 0 0 50% 50%;"></div>
+                        </div>
+                        <div class="body"><div class="collar"></div></div>
+                        <div class="arm left"><div class="hand"></div></div>
+                        <div class="arm right"><div class="hand"></div></div>
+                        <div class="leg left"></div>
+                        <div class="leg right"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slack問題 -->
+    <section class="story-section" style="background: linear-gradient(180deg, #1a1a2a 0%, #2a1a2a 100%);">
+        <div class="chapter-marker"><span>第6章</span> 課題</div>
+        <div class="story-content">
+            <div class="story-text animate-on-scroll">
+                <h2 class="story-title">
+                    「<span class="highlight">90日</span>で<br>
+                    メッセージが消える」
+                </h2>
+                <p class="story-description">
+                    現在、Slackは無料版を使用している。<br>
+                    その結果、メッセージは90日で消えてしまう。<br><br>
+                    過去の議論、決定の経緯、ノウハウ...<br>
+                    すべてが失われていく。<br><br>
+                    AIとの連携を考えても、<br>
+                    <strong>データの蓄積</strong>は最重要課題だ。
+                </p>
+                <div style="background: rgba(108, 92, 231, 0.2); border: 2px solid rgba(108, 92, 231, 0.4); border-radius: 20px; padding: 25px;">
+                    <div style="font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; color: #6C5CE7;">💬 Slack有料版へのアップグレード</div>
+                    <div style="font-size: 1rem; line-height: 1.8;">
+                        ✓ メッセージの永続保存<br>
+                        ✓ 過去の議論を検索可能に<br>
+                        ✓ AI連携の基盤構築<br>
+                        ✓ ナレッジの蓄積と活用
+                    </div>
+                </div>
+            </div>
+            <div class="story-characters animate-on-scroll">
+                <div class="character-container">
+                    <div class="hariu" style="transform: scale(0.85);">
+                        <div class="fire-aura">
+                            <div class="flame"></div>
+                            <div class="flame"></div>
+                            <div class="flame"></div>
+                        </div>
+                        <div class="hair"><div class="hair-highlight"></div></div>
+                        <div class="head">
+                            <div class="eyebrow left"></div>
+                            <div class="eyebrow right"></div>
+                            <div class="eye left"><div class="pupil"></div><div class="shine"></div><div class="shine2"></div></div>
+                            <div class="eye right"><div class="pupil"></div><div class="shine"></div><div class="shine2"></div></div>
+                            <div class="nose"></div>
+                            <div class="mouth"><div class="teeth"></div></div>
+                        </div>
+                        <div class="body"><div class="jacket-collar"></div><div class="tie"></div></div>
+                        <div class="arm left"><div class="fist"></div></div>
+                        <div class="arm right"><div class="hand"></div></div>
+                        <div class="leg left"><div class="shoe"></div></div>
+                        <div class="leg right"><div class="shoe"></div></div>
+                    </div>
+                </div>
+                <div class="speech-bubble" style="margin-left: 20px;">
+                    データがなければ<br>
+                    <strong>改善できない。</strong><br><br>
+                    AI時代において、<br>
+                    データは最大の資産だ。<br>
+                    ここへの投資を惜しむな。
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 7: Investment -->
+    <section class="story-section section-prologue">
+        <div class="chapter-marker"><span>第7章</span> 投資</div>
+        <div class="story-content">
+            <div class="story-text animate-on-scroll">
+                <h2 class="story-title">
+                    「<span class="highlight">今すぐ</span>投資しろ」
+                </h2>
+                <p class="story-description">
+                    改善にはデータが必要だ。<br>
+                    3つの優先投資で、成長の土台を作る。
+                </p>
+                <div class="info-cards" style="grid-template-columns: 1fr;">
+                    <div class="info-card good" style="display: flex; gap: 20px; align-items: center;">
+                        <div style="font-size: 3rem;">💾</div>
+                        <div>
+                            <div class="info-card-title">優先度1: 舞台データベース</div>
+                            <div class="info-card-desc">多軸分析で改善活動の基盤を構築</div>
+                        </div>
+                    </div>
+                    <div class="info-card good" style="display: flex; gap: 20px; align-items: center;">
+                        <div style="font-size: 3rem;">💬</div>
+                        <div>
+                            <div class="info-card-title">優先度2: Slack有料版</div>
+                            <div class="info-card-desc">AI連携・ナレッジ蓄積の基盤</div>
+                        </div>
+                    </div>
+                    <div class="info-card good" style="display: flex; gap: 20px; align-items: center;">
+                        <div style="font-size: 3rem;">🚚</div>
+                        <div>
+                            <div class="info-card-title">優先度3: 物流ネットワーク</div>
+                            <div class="info-card-desc">地方工場→純消費地の自社倉庫</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="story-characters animate-on-scroll">
+                <div class="character-container">
+                    <div class="hariu">
+                        <div class="fire-aura">
+                            <div class="flame"></div>
+                            <div class="flame"></div>
+                            <div class="flame"></div>
+                        </div>
+                        <div class="hair"><div class="hair-highlight"></div></div>
+                        <div class="head">
+                            <div class="eyebrow left"></div>
+                            <div class="eyebrow right"></div>
+                            <div class="eye left"><div class="pupil"></div><div class="shine"></div><div class="shine2"></div></div>
+                            <div class="eye right"><div class="pupil"></div><div class="shine"></div><div class="shine2"></div></div>
+                            <div class="nose"></div>
+                            <div class="mouth"><div class="teeth"></div></div>
+                        </div>
+                        <div class="body"><div class="jacket-collar"></div><div class="tie"></div></div>
+                        <div class="arm left"><div class="fist"></div></div>
+                        <div class="arm right"><div class="hand"></div></div>
+                        <div class="leg left"><div class="shoe"></div></div>
+                        <div class="leg right"><div class="shoe"></div></div>
+                    </div>
+                </div>
+                <div class="speech-bubble idea" style="margin-left: 20px;">
+                    毎日、この3つを<br>
+                    <strong>ファクトで検証しろ。</strong><br><br>
+                    ①この商品に差別化はあるか？<br>
+                    ②逆算コストで本当に作れるか？<br>
+                    ③余ったらどこに売るか決まってるか？<br><br>
+                    <strong>データが答えを出す。</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Finale -->
+    <section class="story-section section-finale">
+        <div class="finale-content animate-on-scroll">
+            <div class="finale-tagline">
+                営業が全部決める。<br>
+                工場が全部作る。<br>
+                何も捨てない。
+            </div>
+
+            <div class="finale-characters">
+                <div class="character-container">
+                    <div class="hariu" style="transform: scale(0.9);">
+                        <div class="fire-aura">
+                            <div class="flame"></div>
+                            <div class="flame"></div>
+                            <div class="flame"></div>
+                        </div>
+                        <div class="hair"><div class="hair-highlight"></div></div>
+                        <div class="head">
+                            <div class="eyebrow left" style="transform: rotate(-18deg);"></div>
+                            <div class="eyebrow right" style="transform: rotate(18deg);"></div>
+                            <div class="eye left"><div class="pupil"></div><div class="shine"></div><div class="shine2"></div></div>
+                            <div class="eye right"><div class="pupil"></div><div class="shine"></div><div class="shine2"></div></div>
+                            <div class="nose"></div>
+                            <div class="mouth" style="height: 18px;"><div class="teeth"></div></div>
+                        </div>
+                        <div class="body"><div class="jacket-collar"></div><div class="tie"></div></div>
+                        <div class="arm left" style="transform: rotate(-60deg); transform-origin: top;"><div class="fist"></div></div>
+                        <div class="arm right"><div class="fist"></div></div>
+                        <div class="leg left"><div class="shoe"></div></div>
+                        <div class="leg right"><div class="shoe"></div></div>
+                    </div>
+                </div>
+                <div class="character-container">
+                    <div class="wakate" style="transform: scale(0.85);">
+                        <div class="hair"></div>
+                        <div class="head">
+                            <div class="eye left" style="height: 26px;"><div class="shine"></div></div>
+                            <div class="eye right" style="height: 26px;"><div class="shine"></div></div>
+                            <div class="mouth" style="width: 22px; height: 10px; background: #E84393; border: none; border-radius: 0 0 50% 50%;"></div>
+                        </div>
+                        <div class="body"><div class="collar"></div></div>
+                        <div class="arm left" style="transform: rotate(-60deg); transform-origin: top;"><div class="hand"></div></div>
+                        <div class="arm right"><div class="hand"></div></div>
+                        <div class="leg left"></div>
+                        <div class="leg right"></div>
+                    </div>
+                </div>
+                <div class="character-container">
+                    <div class="koujou" style="transform: scale(0.9);">
+                        <div class="helmet"></div>
+                        <div class="head">
+                            <div class="eye left" style="height: 20px;"></div>
+                            <div class="eye right" style="height: 20px;"></div>
+                            <div class="cheek left"></div>
+                            <div class="cheek right"></div>
+                            <div class="mouth"><div class="teeth"></div></div>
+                        </div>
+                        <div class="body"></div>
+                        <div class="arm left" style="transform: rotate(-50deg); transform-origin: top;"><div class="hand"></div></div>
+                        <div class="arm right"><div class="hand"></div></div>
+                        <div class="leg left"></div>
+                        <div class="leg right"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="finale-message">
+                <strong style="font-size: 2rem; display: block; margin-bottom: 20px;">
+                    年30%成長、<br>仕組みで必ず達成する。🔥
+                </strong>
+                ① 逆算型コスト設計で勝つ<br>
+                ② 売上50%を新商品で稼ぐ<br>
+                ③ 何も捨てない（TPPA）<br><br>
+                <strong style="font-size: 1.3rem;">ロジックと情熱で、<br>再現可能な成長を実現する。</strong><br><br>
+                <span style="opacity: 0.8;">— 舞台ファーム 営業本部長 針生信洋 —</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: #0a0a1a; text-align: center; padding: 60px 20px; color: rgba(255,255,255,0.6);">
+        <div style="font-size: 2rem; margin-bottom: 20px;">— 完 —</div>
+        <div style="font-size: 1rem;">舞台ファーム 30%成長物語</div>
+    </footer>
+
+    <script>
+        // Scroll Animation
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.2
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
