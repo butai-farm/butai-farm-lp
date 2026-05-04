@@ -1179,7 +1179,9 @@
             white-space: nowrap;
         }
 
-        /* Responsive */
+        /* ========== RESPONSIVE DESIGN ========== */
+
+        /* タブレット (1024px以下) */
         @media (max-width: 1024px) {
             .story-content {
                 grid-template-columns: 1fr;
@@ -1201,24 +1203,267 @@
             .hariu, .wakate, .koujou {
                 transform: scale(0.8);
             }
+
+            .story-section {
+                padding: 60px 30px;
+            }
+
+            .chapter-marker {
+                font-size: 0.9rem;
+                padding: 8px 20px;
+            }
         }
 
+        /* スマートフォン横向き・小型タブレット (768px以下) */
         @media (max-width: 768px) {
             .opening-characters,
             .finale-characters {
                 flex-wrap: wrap;
+                gap: 20px;
             }
 
             .story-title {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
+                line-height: 1.4;
             }
 
             .info-cards {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr !important;
+                gap: 15px;
             }
 
             .stats-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .opening-title {
+                font-size: 2.2rem;
+            }
+
+            .opening-subtitle {
+                font-size: 1rem;
+            }
+
+            .finale-tagline {
+                font-size: 1.6rem;
+            }
+
+            .story-section {
+                padding: 50px 20px;
+                min-height: auto;
+            }
+
+            .story-description {
+                font-size: 0.95rem;
+                line-height: 1.8;
+            }
+
+            .hariu, .wakate, .koujou {
+                transform: scale(0.65);
+            }
+
+            .character-container {
+                margin: 0 -20px;
+            }
+
+            .character-label {
+                font-size: 0.75rem;
+            }
+
+            .speech-bubble {
+                padding: 15px 18px;
+                font-size: 0.9rem;
+                max-width: 280px;
+                margin: 10px auto;
+            }
+
+            .speech-bubble.shout {
+                font-size: 1rem;
+            }
+
+            .chapter-marker {
+                font-size: 0.8rem;
+                padding: 6px 15px;
+                top: 15px;
+                left: 15px;
+            }
+
+            .info-card {
+                padding: 15px;
+            }
+
+            .info-card-icon {
+                font-size: 2rem;
+            }
+
+            .info-card-title {
+                font-size: 1rem;
+            }
+
+            .info-card-desc {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* スマートフォン縦向き (480px以下) */
+        @media (max-width: 480px) {
+            .opening-title {
+                font-size: 1.8rem;
+            }
+
+            .opening-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .story-title {
+                font-size: 1.4rem;
+            }
+
+            .finale-tagline {
+                font-size: 1.3rem;
+            }
+
+            .story-section {
+                padding: 40px 15px;
+            }
+
+            .story-description {
+                font-size: 0.9rem;
+            }
+
+            .hariu, .wakate, .koujou {
+                transform: scale(0.55);
+            }
+
+            .speech-bubble {
+                padding: 12px 15px;
+                font-size: 0.85rem;
+                max-width: 250px;
+                border-radius: 15px;
+            }
+
+            .speech-bubble::before {
+                display: none;
+            }
+
+            .chapter-marker {
+                font-size: 0.7rem;
+                padding: 5px 12px;
+            }
+
+            .story-characters {
+                padding: 10px 0;
+            }
+
+            .opening-characters,
+            .finale-characters {
+                gap: 10px;
+            }
+
+            /* キャラクター周りのスペース調整 */
+            .story-characters .character-container {
+                transform: scale(0.9);
+            }
+
+            /* 吹き出しの三角を非表示（スペース節約） */
+            .speech-bubble::before,
+            .speech-bubble::after {
+                display: none;
+            }
+
+            /* インフォカードのコンパクト化 */
+            .info-card {
+                padding: 12px;
+                border-radius: 12px;
+            }
+
+            .info-card-icon {
+                font-size: 1.8rem;
+                margin-bottom: 5px;
+            }
+
+            /* ボタンなどのタッチターゲット拡大 */
+            button, a {
+                min-height: 44px;
+                min-width: 44px;
+            }
+
+            /* フォントの可読性向上 */
+            body {
+                font-size: 16px;
+                -webkit-text-size-adjust: 100%;
+            }
+        }
+
+        /* 超小型スマートフォン (360px以下) */
+        @media (max-width: 360px) {
+            .opening-title {
+                font-size: 1.5rem;
+            }
+
+            .story-title {
+                font-size: 1.2rem;
+            }
+
+            .hariu, .wakate, .koujou {
+                transform: scale(0.45);
+            }
+
+            .speech-bubble {
+                font-size: 0.8rem;
+                padding: 10px 12px;
+                max-width: 220px;
+            }
+
+            .story-section {
+                padding: 30px 12px;
+            }
+        }
+
+        /* ランドスケープモード（横向き）の調整 */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .story-section {
+                min-height: auto;
+                padding: 30px 40px;
+            }
+
+            .opening-section {
+                min-height: 100vh;
+            }
+
+            .hariu, .wakate, .koujou {
+                transform: scale(0.6);
+            }
+
+            .opening-characters,
+            .finale-characters {
+                flex-direction: row;
+                flex-wrap: nowrap;
+            }
+        }
+
+        /* ダークモード対応（システム設定に連動） */
+        @media (prefers-color-scheme: light) {
+            /* 必要に応じてライトモードのスタイルを追加 */
+        }
+
+        /* 高コントラストモード */
+        @media (prefers-contrast: high) {
+            .story-title,
+            .speech-bubble,
+            .chapter-marker {
+                border: 2px solid white;
+            }
+        }
+
+        /* アニメーション軽減設定 */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
         }
 
