@@ -1263,48 +1263,75 @@
             }
         }
 
-        /* スマートフォン (768px以下) - iPhone対応強化 */
+        /* ========== iPhone プロフェッショナルデザイン ========== */
         @media (max-width: 768px) {
-            /* 基本フォント大きく */
+            /* 基本設定 */
             body {
                 font-size: 18px;
                 -webkit-text-size-adjust: 100%;
             }
 
-            /* セクション */
+            /* 全テキストに影を追加して背景との分離を確保 */
+            .story-title,
+            .story-description,
+            .opening-title,
+            .opening-subtitle,
+            .finale-tagline,
+            .chapter-marker,
+            .character-label,
+            h2, p {
+                text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+            }
+
+            /* セクション - コンテンツ背景を追加 */
             .story-section {
-                padding: 40px 20px;
+                padding: 40px 15px;
                 min-height: auto;
             }
 
-            /* タイトル系 - 大きく読みやすく */
+            /* テキストコンテンツに背景を追加 */
+            .story-text {
+                background: rgba(0, 0, 0, 0.6);
+                padding: 25px 20px;
+                border-radius: 20px;
+                backdrop-filter: blur(10px);
+            }
+
+            /* タイトル - 大きく明瞭に */
             .opening-title {
-                font-size: 2rem;
-                line-height: 1.3;
+                font-size: 1.9rem;
+                line-height: 1.4;
+                font-weight: 900;
             }
 
             .opening-subtitle {
                 font-size: 1.1rem;
+                font-weight: 500;
             }
 
             .story-title {
-                font-size: 1.5rem;
-                line-height: 1.4;
+                font-size: 1.4rem;
+                line-height: 1.5;
+                font-weight: 700;
+                margin-bottom: 15px;
             }
 
             .finale-tagline {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
+                font-weight: 700;
             }
 
-            /* 本文 - 読みやすいサイズ */
+            /* 本文 - 十分な行間と明瞭なコントラスト */
             .story-description {
-                font-size: 1.1rem;
+                font-size: 1.05rem;
                 line-height: 2;
+                font-weight: 400;
+                color: #FFFFFF;
             }
 
-            /* キャラクター - 小さめに */
+            /* キャラクター */
             .hariu, .wakate, .koujou {
-                transform: scale(0.5);
+                transform: scale(0.45);
             }
 
             .character-container {
@@ -1312,22 +1339,26 @@
             }
 
             .character-label {
-                font-size: 0.9rem;
-                margin-top: -30px;
+                font-size: 0.85rem;
+                margin-top: -35px;
+                background: rgba(0, 0, 0, 0.7);
+                padding: 5px 12px;
+                border-radius: 10px;
+                display: inline-block;
             }
 
-            /* 吹き出し - iPhone用に大幅改善 */
+            /* 吹き出し - 完全不透明背景で読みやすく */
             .speech-bubble {
-                padding: 25px;
-                font-size: 1.15rem;
-                line-height: 2;
+                padding: 22px 20px;
+                font-size: 1.1rem;
+                line-height: 1.9;
                 max-width: 100%;
                 width: 100%;
-                margin: 20px 0;
-                border-radius: 20px;
-                background: rgba(30, 30, 50, 0.95);
-                border: 2px solid rgba(255, 255, 255, 0.3);
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+                margin: 15px 0;
+                border-radius: 18px;
+                background: #1a1a2e;
+                border: 2px solid rgba(255, 255, 255, 0.2);
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
                 color: #FFFFFF;
                 font-weight: 500;
             }
@@ -1337,13 +1368,12 @@
             }
 
             .speech-bubble.shout {
-                font-size: 1.25rem;
-                background: rgba(255, 71, 87, 0.95);
+                font-size: 1.15rem;
+                background: #c0392b;
             }
 
             .speech-bubble.idea {
-                background: rgba(108, 92, 231, 0.95);
-                border-color: rgba(108, 92, 231, 0.6);
+                background: #5b4cad;
             }
 
             .speech-bubble strong {
@@ -1351,32 +1381,65 @@
                 font-weight: 700;
             }
 
-            /* CPグループボックス - モバイル対応 */
+            /* CPグループボックス - 完全不透明で読みやすく */
             .cp-group-box {
                 padding: 20px 15px;
+                background: #2d2a1a;
+                border: 2px solid #FDCB6E;
             }
 
             .cp-group-title {
-                font-size: 1.1rem;
+                font-size: 1.15rem;
+                text-shadow: none;
             }
 
             .cp-table {
                 font-size: 1rem;
+                background: rgba(0, 0, 0, 0.3);
+                border-radius: 10px;
             }
 
             .cp-table td {
-                padding: 10px 5px;
+                padding: 12px 8px;
+                text-shadow: none;
             }
 
             .cp-table .arrow {
-                width: 30px;
+                width: 35px;
+                font-size: 1.2rem;
+            }
+
+            .cp-table .result {
+                color: #2ecc71;
+            }
+
+            /* フローチャート */
+            .flow-chart {
+                background: rgba(0, 0, 0, 0.5);
+                padding: 20px 15px;
+                border-radius: 15px;
+            }
+
+            .flow-step {
+                text-shadow: none;
+            }
+
+            /* インフォカード - 不透明背景 */
+            .info-card {
+                background: rgba(20, 20, 40, 0.95) !important;
+                border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            }
+
+            .info-card-title,
+            .info-card-desc {
+                text-shadow: none;
             }
 
             /* レイアウト - 縦並び */
             .story-content {
                 display: flex;
                 flex-direction: column;
-                gap: 30px;
+                gap: 25px;
             }
 
             .story-content.reverse {
@@ -1426,27 +1489,42 @@
             /* チャプターマーカー */
             .chapter-marker {
                 font-size: 0.85rem;
-                padding: 8px 15px;
+                padding: 10px 18px;
                 position: relative;
                 top: auto;
                 left: auto;
                 margin-bottom: 20px;
                 display: inline-block;
+                background: rgba(0, 0, 0, 0.8);
+                border: 1px solid rgba(255, 255, 255, 0.3);
+            }
+
+            /* stats-grid */
+            .stat-box {
+                background: rgba(0, 0, 0, 0.6) !important;
+            }
+
+            .stat-value, .stat-label {
+                text-shadow: none;
             }
         }
 
         /* iPhone SE等の小さい画面 (375px以下) */
         @media (max-width: 375px) {
             .story-section {
-                padding: 30px 15px;
+                padding: 30px 12px;
+            }
+
+            .story-text {
+                padding: 20px 15px;
             }
 
             .opening-title {
-                font-size: 1.7rem;
+                font-size: 1.6rem;
             }
 
             .story-title {
-                font-size: 1.3rem;
+                font-size: 1.25rem;
             }
 
             .story-description {
@@ -1454,17 +1532,26 @@
             }
 
             .speech-bubble {
-                padding: 15px;
+                padding: 18px 15px;
                 font-size: 1rem;
             }
 
             .hariu, .wakate, .koujou {
-                transform: scale(0.4);
+                transform: scale(0.38);
             }
 
             .character-label {
-                font-size: 0.8rem;
+                font-size: 0.75rem;
                 margin-top: -40px;
+                padding: 4px 10px;
+            }
+
+            .cp-table {
+                font-size: 0.95rem;
+            }
+
+            .cp-table td {
+                padding: 10px 6px;
             }
         }
 
