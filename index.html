@@ -1267,17 +1267,20 @@
                 margin-top: -30px;
             }
 
-            /* 吹き出し - 大きく読みやすく */
+            /* 吹き出し - iPhone用に大幅改善 */
             .speech-bubble {
-                padding: 20px;
-                font-size: 1.1rem;
-                line-height: 1.8;
+                padding: 25px;
+                font-size: 1.15rem;
+                line-height: 2;
                 max-width: 100%;
                 width: 100%;
-                margin: 15px 0;
+                margin: 20px 0;
                 border-radius: 20px;
-                background: rgba(255, 255, 255, 0.15);
-                backdrop-filter: blur(10px);
+                background: rgba(30, 30, 50, 0.95);
+                border: 2px solid rgba(255, 255, 255, 0.3);
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+                color: #FFFFFF;
+                font-weight: 500;
             }
 
             .speech-bubble::before {
@@ -1285,11 +1288,18 @@
             }
 
             .speech-bubble.shout {
-                font-size: 1.2rem;
+                font-size: 1.25rem;
+                background: rgba(255, 71, 87, 0.95);
+            }
+
+            .speech-bubble.idea {
+                background: rgba(108, 92, 231, 0.95);
+                border-color: rgba(108, 92, 231, 0.6);
             }
 
             .speech-bubble strong {
                 color: #FFD93D;
+                font-weight: 700;
             }
 
             /* レイアウト - 縦並び */
