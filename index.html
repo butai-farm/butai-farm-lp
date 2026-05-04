@@ -1179,6 +1179,54 @@
             white-space: nowrap;
         }
 
+        /* ========== CP GROUP BOX ========== */
+        .cp-group-box {
+            background: rgba(253, 203, 110, 0.2);
+            border: 2px solid rgba(253, 203, 110, 0.5);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .cp-group-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #FDCB6E;
+            text-align: center;
+        }
+
+        .cp-flow-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .cp-flow-item {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .cp-from {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .cp-arrow {
+            color: #FDCB6E;
+            font-size: 1.2rem;
+            margin: 5px 0;
+        }
+
+        .cp-to {
+            font-size: 1rem;
+            color: #00B894;
+            font-weight: 600;
+        }
+
         /* ========== RESPONSIVE DESIGN ========== */
 
         /* タブレット (1024px以下) */
@@ -1300,6 +1348,35 @@
             .speech-bubble strong {
                 color: #FF6B6B;
                 font-weight: 700;
+            }
+
+            /* CPグループボックス - モバイル対応 */
+            .cp-group-box {
+                padding: 20px 15px;
+            }
+
+            .cp-group-title {
+                font-size: 1.2rem;
+            }
+
+            .cp-flow-list {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .cp-flow-item {
+                padding: 18px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cp-from {
+                font-size: 1.15rem;
+            }
+
+            .cp-to {
+                font-size: 1.1rem;
             }
 
             /* レイアウト - 縦並び */
@@ -2067,43 +2144,33 @@
                     廃棄コストを利益に転換する仕組み、<br>
                     それを<strong>徹底的にパクってパクってアレンジ（TPPA）</strong>する。
                 </p>
-                <div style="background: rgba(253, 203, 110, 0.2); border: 2px solid rgba(253, 203, 110, 0.5); border-radius: 20px; padding: 25px; margin-bottom: 25px;">
-                    <div style="font-size: 1.3rem; font-weight: 700; margin-bottom: 15px; color: #FDCB6E;">🐊 CPグループの驚異的な仕組み</div>
-                    <div style="display: grid; gap: 15px;">
-                        <div style="display: flex; align-items: center; gap: 15px;">
-                            <span style="font-size: 1.5rem;">🐔</span>
-                            <span>疾病リスクの鶏（IoT+AIで個体管理）</span>
-                            <span style="color: #FDCB6E;">→</span>
-                            <span style="font-size: 1.5rem;">🐊</span>
-                            <span>ワニの餌に</span>
+                <div class="cp-group-box">
+                    <div class="cp-group-title">🐊 CPグループの驚異的な仕組み</div>
+                    <div class="cp-flow-list">
+                        <div class="cp-flow-item">
+                            <div class="cp-from">🐔 疾病リスクの鶏</div>
+                            <div class="cp-arrow">▼</div>
+                            <div class="cp-to">🐊 ワニの餌に</div>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 15px;">
-                            <span style="font-size: 1.5rem;">🐊</span>
-                            <span>育ったワニ</span>
-                            <span style="color: #FDCB6E;">→</span>
-                            <span style="font-size: 1.5rem;">🥩</span>
-                            <span>中国で高級食材として販売</span>
+                        <div class="cp-flow-item">
+                            <div class="cp-from">🐊 育ったワニ</div>
+                            <div class="cp-arrow">▼</div>
+                            <div class="cp-to">🥩 中国で高級食材</div>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 15px;">
-                            <span style="font-size: 1.5rem;">🐊</span>
-                            <span>ワニの皮</span>
-                            <span style="color: #FDCB6E;">→</span>
-                            <span style="font-size: 1.5rem;">👜</span>
-                            <span>高級革製品（バッグ等）</span>
+                        <div class="cp-flow-item">
+                            <div class="cp-from">🐊 ワニの皮</div>
+                            <div class="cp-arrow">▼</div>
+                            <div class="cp-to">👜 高級革製品</div>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 15px;">
-                            <span style="font-size: 1.5rem;">🥚</span>
-                            <span>割れた卵</span>
-                            <span style="color: #FDCB6E;">→</span>
-                            <span style="font-size: 1.5rem;">🧪</span>
-                            <span>液卵としてパン工場へ</span>
+                        <div class="cp-flow-item">
+                            <div class="cp-from">🥚 割れた卵</div>
+                            <div class="cp-arrow">▼</div>
+                            <div class="cp-to">🧪 液卵→パン工場へ</div>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 15px;">
-                            <span style="font-size: 1.5rem;">🐚</span>
-                            <span>卵の殻＋鶏糞</span>
-                            <span style="color: #FDCB6E;">→</span>
-                            <span style="font-size: 1.5rem;">🌱</span>
-                            <span>肥料として農家へ販売</span>
+                        <div class="cp-flow-item">
+                            <div class="cp-from">🐚 卵の殻＋鶏糞</div>
+                            <div class="cp-arrow">▼</div>
+                            <div class="cp-to">🌱 肥料として販売</div>
                         </div>
                     </div>
                 </div>
