@@ -968,15 +968,14 @@
 
         /* Chapter Markers */
         .chapter-marker {
-            position: absolute;
-            top: 40px;
-            left: 40px;
+            display: inline-block;
             background: rgba(255,255,255,0.1);
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-size: 1rem;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 0.95rem;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.2);
+            margin-bottom: 15px;
         }
 
         .chapter-marker span {
@@ -1488,20 +1487,15 @@
                 font-size: 1rem;
             }
 
-            /* チャプターマーカー - 中央配置 */
+            /* チャプターマーカー - タイトル上に配置 */
             .chapter-marker {
-                font-size: 0.9rem;
-                padding: 12px 25px;
-                position: relative;
-                top: auto;
-                left: auto;
-                margin: 0 auto 25px auto;
-                display: block;
-                text-align: center;
-                width: fit-content;
-                background: rgba(0, 0, 0, 0.85);
-                border: 1px solid rgba(255, 255, 255, 0.3);
-                border-radius: 25px;
+                font-size: 0.85rem;
+                padding: 8px 16px;
+                margin-bottom: 12px;
+                display: inline-block;
+                background: rgba(253, 203, 110, 0.2);
+                border: 1px solid rgba(253, 203, 110, 0.5);
+                border-radius: 20px;
             }
 
             /* セクション全体を中央寄せ */
@@ -1736,9 +1730,9 @@
 
     <!-- Prologue: 舞台ファームとは -->
     <section class="story-section" style="background: linear-gradient(180deg, #0a0a1a 0%, #1a1a3a 100%);">
-        <div class="chapter-marker"><span>序章</span> 舞台ファームとは</div>
         <div class="story-content">
             <div class="story-text animate-on-scroll">
+                <div class="chapter-marker"><span>序章</span> 舞台ファームとは</div>
                 <h2 class="story-title">
                     宮城から始まった<br>
                     <span class="highlight">農業ベンチャー</span>
@@ -1779,9 +1773,9 @@
 
     <!-- 針生本部長の紹介 -->
     <section class="story-section" style="background: linear-gradient(180deg, #1a1a3a 0%, #2d1a3a 100%);">
-        <div class="chapter-marker"><span>序章</span> 主人公</div>
         <div class="story-content reverse">
             <div class="story-text animate-on-scroll">
+                <div class="chapter-marker"><span>序章</span> 主人公</div>
                 <h2 class="story-title">
                     <span class="highlight">営業本部長</span><br>
                     針生信洋
@@ -1839,9 +1833,9 @@
 
     <!-- Chapter 1: Crisis -->
     <section class="story-section section-crisis">
-        <div class="chapter-marker"><span>第1章</span> 危機</div>
         <div class="story-content">
             <div class="story-text animate-on-scroll">
+                <div class="chapter-marker"><span>第1章</span> 危機</div>
                 <h2 class="story-title">
                     「このままじゃ、<br>
                     <span class="highlight">会社が終わる</span>」
@@ -1900,9 +1894,9 @@
 
     <!-- Chapter 2: The Leader Appears -->
     <section class="story-section section-solution">
-        <div class="chapter-marker"><span>第2章</span> 覚醒</div>
         <div class="story-content reverse">
             <div class="story-text animate-on-scroll">
+                <div class="chapter-marker"><span>第2章</span> 覚醒</div>
                 <h2 class="story-title">
                     「<span class="highlight">逆算</span>で考えろ」
                 </h2>
@@ -1976,9 +1970,9 @@
 
     <!-- Chapter 2.5: 工場長との対話 -->
     <section class="story-section" style="background: linear-gradient(180deg, #2d2d5a 0%, #1a1a3a 100%);">
-        <div class="chapter-marker"><span>第2章</span> 対話</div>
         <div class="story-content">
             <div class="story-text animate-on-scroll">
+                <div class="chapter-marker"><span>第2章</span> 対話</div>
                 <h2 class="story-title">
                     「本当に<span class="highlight">その価格</span>で<br>
                     作れるのか？」
@@ -2018,9 +2012,9 @@
 
     <!-- 針生の説得 -->
     <section class="story-section" style="background: linear-gradient(180deg, #1a1a3a 0%, #1a3a2a 100%);">
-        <div class="chapter-marker"><span>第2章</span> 説得</div>
         <div class="story-content reverse">
             <div class="story-text animate-on-scroll">
+                <div class="chapter-marker"><span>第2章</span> 説得</div>
                 <h2 class="story-title">
                     「<span class="highlight">一緒に考えよう</span>」
                 </h2>
@@ -2079,9 +2073,9 @@
 
     <!-- 工場長の理解 -->
     <section class="story-section section-solution">
-        <div class="chapter-marker"><span>第2章</span> 理解</div>
         <div class="story-content">
             <div class="story-text animate-on-scroll">
+                <div class="chapter-marker"><span>第2章</span> 理解</div>
                 <h2 class="story-title">
                     「<span class="highlight">やってみるか</span>」
                 </h2>
@@ -2134,9 +2128,9 @@
 
     <!-- Chapter 3: New Products -->
     <section class="story-section section-lesson">
-        <div class="chapter-marker"><span>第3章</span> 挑戦</div>
         <div class="story-content">
             <div class="story-text animate-on-scroll">
+                <div class="chapter-marker"><span>第3章</span> 挑戦</div>
                 <h2 class="story-title">
                     「売上の<span class="highlight">50%</span>を<br>
                     新商品で稼げ」
@@ -2192,9 +2186,9 @@
 
     <!-- Chapter 4: Zero Waste - 現状の問題 -->
     <section class="story-section section-crisis">
-        <div class="chapter-marker"><span>第4章</span> 転換</div>
         <div class="story-content">
             <div class="story-text animate-on-scroll">
+                <div class="chapter-marker"><span>第4章</span> 転換</div>
                 <h2 class="story-title">
                     「今、<span class="highlight">どれだけ捨ててる？</span>」
                 </h2>
@@ -2254,9 +2248,9 @@
 
     <!-- Chapter 4-2: Zero Waste Solution -->
     <section class="story-section section-solution">
-        <div class="chapter-marker"><span>第4章</span> 解決策</div>
         <div class="story-content reverse">
             <div class="story-text animate-on-scroll">
+                <div class="chapter-marker"><span>第4章</span> 解決策</div>
                 <h2 class="story-title">
                     「<span class="highlight">何も捨てるな</span>」
                 </h2>
@@ -2303,9 +2297,9 @@
 
     <!-- Chapter 4-3: 舞台ファームでの適用 -->
     <section class="story-section section-lesson">
-        <div class="chapter-marker"><span>第4章</span> 適用</div>
         <div class="story-content">
             <div class="story-text animate-on-scroll">
+                <div class="chapter-marker"><span>第4章</span> 適用</div>
                 <h2 class="story-title">
                     「舞台ファームで<span class="highlight">どう変える？</span>」
                 </h2>
@@ -2376,9 +2370,9 @@
 
     <!-- Chapter: 物流戦略 -->
     <section class="story-section" style="background: linear-gradient(180deg, #1a2a4a 0%, #0a1a3a 100%);">
-        <div class="chapter-marker"><span>第5章</span> 物流</div>
         <div class="story-content">
             <div class="story-text animate-on-scroll">
+                <div class="chapter-marker"><span>第5章</span> 物流</div>
                 <h2 class="story-title">
                     「<span class="highlight">物流</span>も<br>
                     トータルで考えろ」
@@ -2449,9 +2443,9 @@
 
     <!-- Chapter: データ基盤 -->
     <section class="story-section" style="background: linear-gradient(180deg, #0a1a3a 0%, #1a1a2a 100%);">
-        <div class="chapter-marker"><span>第6章</span> データ</div>
         <div class="story-content reverse">
             <div class="story-text animate-on-scroll">
+                <div class="chapter-marker"><span>第6章</span> データ</div>
                 <h2 class="story-title">
                     「<span class="highlight">改善</span>には<br>
                     データが必要だ」
@@ -2508,9 +2502,9 @@
 
     <!-- Slack問題 -->
     <section class="story-section" style="background: linear-gradient(180deg, #1a1a2a 0%, #2a1a2a 100%);">
-        <div class="chapter-marker"><span>第6章</span> 課題</div>
         <div class="story-content">
             <div class="story-text animate-on-scroll">
+                <div class="chapter-marker"><span>第6章</span> 課題</div>
                 <h2 class="story-title">
                     「<span class="highlight">90日</span>で<br>
                     メッセージが消える」
@@ -2570,9 +2564,9 @@
 
     <!-- Chapter 7: Investment -->
     <section class="story-section section-prologue">
-        <div class="chapter-marker"><span>第7章</span> 投資</div>
         <div class="story-content">
             <div class="story-text animate-on-scroll">
+                <div class="chapter-marker"><span>第7章</span> 投資</div>
                 <h2 class="story-title">
                     「<span class="highlight">今すぐ</span>投資しろ」
                 </h2>
